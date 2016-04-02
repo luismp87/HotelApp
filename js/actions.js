@@ -1,6 +1,6 @@
 var fn = {
     ready: function(){
-    document.addEventListener("deviceready",fn.init,false)    
+    document.addEventListener("deviceready",fn.init,false);    
         
     },
     
