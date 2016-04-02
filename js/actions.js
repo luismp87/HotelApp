@@ -1,12 +1,21 @@
 var fn = {
+    ready: function(){
+    document.addEventListener("deviceready",fn.init,false)    
+        
+    },
+    
     init: function(){
     if(!fn.estaRegistrado())
-    window.location.href = '#registro'; 
-        $('#registro div[data-role="footer"] a').click(fn.registrar);
+    //window.location.href = '#registro'; 
+        //$('#registro div[data-role="footer"] a').click(fn.registrar);
 },
     //------ funciones de registro ------
     estaRegistrado: function(){
+        var usr =  window.localStorage.getItem("user");
+        if(usr == undefined || usr == '')
         return false;        
+        else
+            retu true;
     },
     registrar: function(){
         var nom = $('#regNom').val();
@@ -16,10 +25,21 @@ var fn = {
         
         //alert(nom + ' ' + mail + ' ' + tel + ' ' + foto);
         
-        if(nom != '' && mail  != '' && tel != '')
+        if(nom != '' && mail  != '' && tel != '' && foto != undefined)
             {
-                
-                alert('Sincronizar');
+               //sincroniza con ajax
+                                    $.ajax({
+                      method: "POST",
+                      url: "http://carlos.igisoft.com/apps/test.php",
+                      data: { nom: nom, mail: mail, tel: tel}
+                    })
+                      .done(function( msg ) {
+                        if(msg == 1){
+                                ft.transfer(foto)                                
+                            }
+                      });
+                ///
+               
             }
         else
             {
@@ -28,4 +48,4 @@ var fn = {
             }
     }
 };
-$(fn.init);
+$(fn.ready);
