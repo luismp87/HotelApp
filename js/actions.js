@@ -7,7 +7,7 @@ var fn = {
     init: function(){
     if(!fn.estaRegistrado())
     window.location.href = '#registro'; 
-    $('#registro div[data-role="footer"] a').click(fn.registrar);
+   $('#registro div[data-role="footer"] a').click(fn.registrar);
    $("#tomaFoto").click(capture.takePhoto);
 },
     //------ funciones de registro ------
