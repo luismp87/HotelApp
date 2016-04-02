@@ -31,10 +31,9 @@ var fn = {
                //sincroniza con ajax
                                     $.ajax({
                       method: "POST",
-                      url: "http://carlos.igisoft.com/apps/test.php",
+                      url: "http://carlos.igitsoft.com/apps/test.php",
                       data: { nom: nom, mail: mail, tel: tel}
-                    })
-                      .done(function( msg ) {
+                    }).done(function( msg ) {
                         if(msg == 1){
                                 ft.transfer(foto)                                
                             }
